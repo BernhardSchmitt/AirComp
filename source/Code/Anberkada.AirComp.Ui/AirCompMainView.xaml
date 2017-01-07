@@ -1,0 +1,56 @@
+﻿<UserControl x:Class="Anberkada.AirComp.Ui.AirCompMainView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="600" d:DesignWidth="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="300"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="300"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="30"></RowDefinition>
+            <RowDefinition Height="40"></RowDefinition>
+            <RowDefinition Height="30"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <!-- Volume -->
+        <Slider x:Name="VolumeSlider" Grid.Row="0" Grid.Column="0" Orientation="Vertical" HorizontalAlignment="Center" Minimum="0.0" Maximum="1.0" Value="{Binding Path=CurrentAmplitude, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+        <Label Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center">Volume</Label>
+
+        <!-- Expression -->
+        <Slider x:Name="ExpressionSlider" Grid.Row="2" Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Center" Width="290" Minimum="0.0" Maximum="1.0" Value="{Binding Path=CurrentExpression, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+        <ComboBox Grid.Row="3" Grid.Column="0" HorizontalAlignment="Center" 
+                  ItemsSource="{Binding Path=AvailableExpressionControlItems}" SelectedValue="{Binding Path=CurrentExpressionControlItem}" DisplayMemberPath="FriendlyName"/>
+        
+        <!-- Chord / Leadsheet -->
+        <Grid Grid.Row="0" Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <Label x:Name="TitleLabel" Grid.Row="0" HorizontalAlignment="Center">AirComp</Label>
+            <TextBlock x:Name="CurrentPitchLabel" Grid.Row="1" HorizontalAlignment="Center" FontSize="40" Text="{Binding Path=CurrentPitchName}" />
+        </Grid>
+        <StackPanel x:Name="LeadSheetListView" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center" Orientation="Horizontal" VerticalAlignment="Center">
+            <Label VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,8,0,0">C7</Label>
+            <Label VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,8,0,0">F7</Label>
+            <Label VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,8,0,0">G7</Label>
+            <Label FontSize="24" VerticalAlignment="Center" HorizontalAlignment="Center">F7</Label>
+        </StackPanel>
+
+        <!-- Pitch -->
+        <Slider x:Name="PitchSlider" Grid.Row="0" Grid.Column="2" HorizontalAlignment="Center" Orientation="Vertical" Minimum="0.0" Maximum="1.0" 
+                Value="{Binding Path=CurrentPitchValue, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+        <Label Grid.Row="1" Grid.Column="2" HorizontalAlignment="Center">Pitch</Label>
+        <StackPanel Grid.Row="2" Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Center">
+            <ComboBox ItemsSource="{Binding Path=AvailableBaseTones}" SelectedValue="{Binding Path=CurrentBaseTone}" FontSize="24" VerticalAlignment="Center" />
+            <ComboBox ItemsSource="{Binding Path=AvailableScaleItems}" DisplayMemberPath="FriendlyName" SelectedValue="{Binding Path=CurrentScale}" VerticalAlignment="Center" />
+            <Button Command="{Binding ResetCommand}" Margin="40,0,0,0">Reset</Button>
+        </StackPanel>
+    </Grid>
+</UserControl>

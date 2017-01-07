@@ -1,0 +1,33 @@
+﻿<UserControl x:Class="Anberkada.AirComp.Ui.AirCompConfigView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:local="clr-namespace:Anberkada.AirComp.Ui"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <!--<UserControl.DataContext>
+        <local:AirCompViewModel />
+    </UserControl.DataContext>-->
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <TextBlock Grid.Row="0" Grid.ColumnSpan="4" HorizontalAlignment="Left">MIDI Out</TextBlock>
+        <TextBlock Grid.Row="1" Grid.Column="0">Device:</TextBlock>
+        <ComboBox Grid.Row="1" Grid.Column="1"
+                  ItemsSource="{Binding Path=AvailableOutDevices}" SelectedValue="{Binding Path=CurrentOutDeviceName}"
+                  VerticalAlignment="Top"/>
+        <TextBlock Grid.Row="1" Grid.Column="2" >Channel:</TextBlock>
+        <ComboBox Grid.Row="1" Grid.Column="3" 
+                  ItemsSource="{Binding Path=AvailableOutChannels}" SelectedValue="{Binding Path=CurrentOutChannel}"
+                  VerticalAlignment="Top"/>
+    </Grid>
+</UserControl>

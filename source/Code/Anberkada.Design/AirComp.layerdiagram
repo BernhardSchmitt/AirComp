@@ -1,0 +1,148 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<layerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/SimpleShapesModel" dslVersion="1.0.0.0" Id="ab98cbbf-ea88-42e5-aaa1-68ac5318f494" xmlns="http://schemas.microsoft.com/VisualStudio/TeamArchitect/LayerDesigner">
+  <layers>
+    <layer Id="f1032089-8900-4dd4-84c0-dc3d97b43307" name="UI">
+      <dependencyToLayers>
+        <dependencyFromLayerToLayer Id="592f188a-caa6-4ffe-8dae-e6d7bb0ed142" direction="Forward">
+          <layerMoniker Id="3a4ca684-36fe-4aa5-b828-e62afab50e0b" />
+        </dependencyFromLayerToLayer>
+        <dependencyFromLayerToLayer Id="aacabebd-ae2d-4aa0-b061-00674354cd19" direction="Forward">
+          <layerMoniker Id="f5d88893-5b07-4e72-b3e3-3511ed97abae" />
+        </dependencyFromLayerToLayer>
+      </dependencyToLayers>
+      <references>
+        <reference Id="174cde11-6134-4f01-b7e2-e366d32aa5b4" name="Anberkada.AirComp.Ui">
+          <ArtifactNode Label="Anberkada.AirComp.Ui" Category="CodeSchema_Project" Id="(Assembly=../Anberkada.AirComp.Ui/Anberkada.AirComp.Ui.csproj)">
+            <Category Ref="File" />
+          </ArtifactNode>
+          <ExpandedNode Id="(Assembly=Anberkada.AirComp.Ui)" Label="Anberkada.AirComp.Ui.dll" Category="CodeSchema_Assembly">
+            <Category Ref="FileSystem.Category.FileOfType.dll" />
+            <LinkCategory Ref="Produces" />
+            <LinkCategory Ref="Represents" />
+          </ExpandedNode>
+        </reference>
+      </references>
+    </layer>
+    <layer Id="3a4ca684-36fe-4aa5-b828-e62afab50e0b" name="Biz">
+      <childLayers>
+        <layer Id="40f408e2-2b22-473a-b39f-7fbb3f69a4c4" name="AirComp.Biz">
+          <dependencyToLayers>
+            <dependencyFromLayerToLayer Id="3b84cf6d-5b03-48fe-a96e-34be412af980" direction="Forward">
+              <layerMoniker Id="b6302e86-3d3a-41b0-bcaa-3b51b1545185" />
+            </dependencyFromLayerToLayer>
+            <dependencyFromLayerToLayer Id="a8840720-16ea-4ab9-a902-0e848dc9f22e" direction="Forward">
+              <layerMoniker Id="5fd9328c-0bfa-4d9b-8a87-12fd713e7b1b" />
+            </dependencyFromLayerToLayer>
+            <dependencyFromLayerToLayer Id="b8cfcfc3-2db4-496a-b190-e179f5986b71" direction="Forward">
+              <layerMoniker Id="f5d88893-5b07-4e72-b3e3-3511ed97abae" />
+            </dependencyFromLayerToLayer>
+          </dependencyToLayers>
+          <references>
+            <reference Id="12d2a2f5-ea6b-4098-a5a7-5ad72635bfad" name="Anberkada.AirComp.Biz">
+              <ArtifactNode Label="Anberkada.AirComp.Biz" Category="CodeSchema_Project" Id="(Assembly=../Anberkada.AirComp.Biz/Anberkada.AirComp.Biz.csproj)">
+                <Category Ref="File" />
+              </ArtifactNode>
+              <ExpandedNode Id="(Assembly=Anberkada.AirComp.Biz)" Label="Anberkada.AirComp.Biz.dll" Category="CodeSchema_Assembly">
+                <Category Ref="FileSystem.Category.FileOfType.dll" />
+                <LinkCategory Ref="Produces" />
+                <LinkCategory Ref="Represents" />
+              </ExpandedNode>
+            </reference>
+          </references>
+        </layer>
+        <layer Id="0463f994-26c4-47ce-b293-5e82e8482e56" name="MidiAdapter">
+          <dependencyToLayers>
+            <dependencyFromLayerToLayer Id="bad46cf2-3622-466d-b37a-ec08b851484d" direction="Forward">
+              <layerMoniker Id="4043f4a9-0917-4fda-ba59-d14d94cfde26" />
+            </dependencyFromLayerToLayer>
+          </dependencyToLayers>
+          <references>
+            <reference Id="549387a1-80f9-4402-8636-3c87920c3397" name="Anberkada.Comp.MidiAdapter">
+              <ArtifactNode Label="Anberkada.Comp.MidiAdapter" Category="CodeSchema_Project" Id="(Assembly=../Anberkada.Comp.MidiAdapter/Anberkada.Comp.MidiAdapter.csproj)">
+                <Category Ref="File" />
+              </ArtifactNode>
+              <ExpandedNode Id="(Assembly=Anberkada.Comp.MidiAdapter)" Label="Anberkada.Comp.MidiAdapter.dll" Category="CodeSchema_Assembly">
+                <Category Ref="FileSystem.Category.FileOfType.dll" />
+                <LinkCategory Ref="Produces" />
+                <LinkCategory Ref="Represents" />
+              </ExpandedNode>
+            </reference>
+          </references>
+        </layer>
+        <layer Id="5fd9328c-0bfa-4d9b-8a87-12fd713e7b1b" name="Sequencer">
+          <dependencyToLayers>
+            <dependencyFromLayerToLayer Id="24da23d7-2696-4111-b39b-4baeb5ebd425" direction="Forward">
+              <layerMoniker Id="0463f994-26c4-47ce-b293-5e82e8482e56" />
+            </dependencyFromLayerToLayer>
+            <dependencyFromLayerToLayer Id="8d59697f-6312-4712-a03a-6584052d5e58" direction="Forward">
+              <layerMoniker Id="f5d88893-5b07-4e72-b3e3-3511ed97abae" />
+            </dependencyFromLayerToLayer>
+          </dependencyToLayers>
+          <references>
+            <reference Id="c217185a-1803-44c8-b8ff-4593342311c0" name="Anberkada.Sequencer">
+              <ArtifactNode Label="Anberkada.Sequencer" Category="CodeSchema_Project" Id="(Assembly=../Anberkada.Sequencer/Anberkada.Sequencer.csproj)">
+                <Category Ref="File" />
+              </ArtifactNode>
+              <ExpandedNode Id="(Assembly=Anberkada.Sequencer)" Label="Anberkada.Sequencer.dll" Category="CodeSchema_Assembly">
+                <Category Ref="FileSystem.Category.FileOfType.dll" />
+                <LinkCategory Ref="Produces" />
+                <LinkCategory Ref="Represents" />
+              </ExpandedNode>
+            </reference>
+          </references>
+        </layer>
+        <layer Id="f5d88893-5b07-4e72-b3e3-3511ed97abae" name="MusicBase">
+          <references>
+            <reference Id="bbc0cd36-2270-4a9a-8597-219932428943" name="Anberkada.MusicBase.Biz">
+              <ArtifactNode Label="Anberkada.MusicBase.Biz" Category="CodeSchema_Project" Id="(Assembly=../Anberkada.MusicBase.Biz/Anberkada.MusicBase.Biz.csproj)">
+                <Category Ref="File" />
+              </ArtifactNode>
+              <ExpandedNode Id="(Assembly=Anberkada.MusicBase.Biz)" Label="Anberkada.MusicBase.Biz.dll" Category="CodeSchema_Assembly">
+                <Category Ref="FileSystem.Category.FileOfType.dll" />
+                <LinkCategory Ref="Produces" />
+                <LinkCategory Ref="Represents" />
+              </ExpandedNode>
+            </reference>
+          </references>
+        </layer>
+      </childLayers>
+    </layer>
+    <layer Id="c1662b44-042d-49fd-b73f-96b814651208" name="App">
+      <dependencyToLayers>
+        <dependencyFromLayerToLayer Id="d5a20af5-e6f5-4f89-94ea-a3b1d63c382a" direction="Forward">
+          <layerMoniker Id="f1032089-8900-4dd4-84c0-dc3d97b43307" />
+        </dependencyFromLayerToLayer>
+        <dependencyFromLayerToLayer Id="3f51c2bf-57ae-4785-9fe7-440f1a81a7bb" direction="Forward">
+          <layerMoniker Id="1f3a6ea4-3649-4a64-9cd1-68abc2ad810e" />
+        </dependencyFromLayerToLayer>
+        <dependencyFromLayerToLayer Id="10553893-a2f2-42de-b794-025cdc7b97ce" direction="Forward">
+          <layerMoniker Id="40f408e2-2b22-473a-b39f-7fbb3f69a4c4" />
+        </dependencyFromLayerToLayer>
+        <dependencyFromLayerToLayer Id="655cd178-512d-4916-bd60-1deb4be1cd2c" direction="Forward">
+          <layerMoniker Id="0463f994-26c4-47ce-b293-5e82e8482e56" />
+        </dependencyFromLayerToLayer>
+        <dependencyFromLayerToLayer Id="b9a6d46c-527c-481b-9198-e1a3985fec07" direction="Forward">
+          <layerMoniker Id="f5d88893-5b07-4e72-b3e3-3511ed97abae" />
+        </dependencyFromLayerToLayer>
+      </dependencyToLayers>
+      <references>
+        <reference Id="98bbb603-7070-4d7f-9631-2db30203e8cc" name="Anberkada.AirComp">
+          <ArtifactNode Label="Anberkada.AirComp" Category="CodeSchema_Project" Id="(Assembly=../AirComp/Anberkada.AirComp.csproj)">
+            <Category Ref="File" />
+          </ArtifactNode>
+          <ExpandedNode Id="(Assembly=Anberkada.AirComp)" Label="Anberkada.AirComp.exe" Category="CodeSchema_Assembly">
+            <Category Ref="FileSystem.Category.FileOfType.exe" />
+            <LinkCategory Ref="Produces" />
+            <LinkCategory Ref="Represents" />
+          </ExpandedNode>
+        </reference>
+      </references>
+    </layer>
+    <layer Id="1f3a6ea4-3649-4a64-9cd1-68abc2ad810e" name="SOUP">
+      <childLayers>
+        <layer Id="b6302e86-3d3a-41b0-bcaa-3b51b1545185" name="Leap" />
+        <layer Id="4043f4a9-0917-4fda-ba59-d14d94cfde26" name="MIDI" />
+      </childLayers>
+    </layer>
+  </layers>
+</layerModel>
