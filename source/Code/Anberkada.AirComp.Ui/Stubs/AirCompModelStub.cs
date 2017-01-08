@@ -16,6 +16,7 @@ namespace Anberkada.AirComp.Ui.Stubs
             CurrentAmplitude = 0.5f;
             CurrentExpression = 0.5f;
             CurrentPitch = new Pitch(60);
+            PlayingPitch = new Pitch(50);
             CurrentPitchBend = 0f;
             CurrentScale = ScaleFactory.CreateScale(Tone.C, Scales.Chromatic);
             AvailableOutDevices = new List<string> { "My MIDI out device" };
@@ -55,6 +56,8 @@ namespace Anberkada.AirComp.Ui.Stubs
         public ExpressionControlType CurrentExpressionControlType { get; set; }
 
         public Pitch CurrentPitch { get; set; }
+
+        public Pitch PlayingPitch { get; set; }
 
         public double CurrentPitchBend { get; set; }
 

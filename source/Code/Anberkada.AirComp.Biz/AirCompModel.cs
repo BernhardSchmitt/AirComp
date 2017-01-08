@@ -17,6 +17,7 @@ namespace Anberkada.AirComp.Biz
         private static DateTime _lastNoteOnDateTime = DateTime.Now;
         private static Vector _lastTranslationVectorOfPitchPointable = new Vector(0f, 0f, 0f);
         private static Vector _centerPositionForPitchBend = new Vector(0f, 0f, 0f);
+        private static Vector _noteOnPosition = new Vector(0f, 0f, 0f);
         private Controller _controller;
         private Listener _listener;
         
@@ -59,20 +60,34 @@ namespace Anberkada.AirComp.Biz
                     return;
                 }
 
-                // Switch app mode?
+                // All notes off, if 2 hands raised
                 var modeControlHand = GetModeControlHand(deviceFrame.Hands);
                 if (modeControlHand != null && TryHandleAllNotesOff(modeControlHand))
                 {
                     return;
                 }
 
+                // Control amplitude with left hand in y-direction:
                 UpdateAmplitude(GetAmplitudeHand(deviceFrame.Hands));
+
+                // Control pitch with optional right hand in y-direction:
                 UpdatePitch(GetPitchHand(deviceFrame.Hands));
+
+                // Control expression/modulation with optional right hand in x-direction:
                 UpdateExpression(GetExpressionHand(deviceFrame.Hands));
+
+                // Switch off current note?
+                if (PlayingPitch != null)
+                {
+                    if (TryHandleNoteOff(deviceFrame))
+                    {
+                        return;
+                    }
+                }
 
                 var pitchBendPointable = GetPitchBendPointable(deviceFrame.Hands);
 
-                // Try to handle note on gesture TODO check, if automatic note off behaviour in MidiOutAdapter is evolvable
+                // Try to handle note on gesture: Right handed finger tip
                 if (TryHandleNoteOn(deviceFrame) && pitchBendPointable != null)
                 {
                     // Pitch bend will be reset with each note on
@@ -271,10 +286,11 @@ namespace Anberkada.AirComp.Biz
                 {
                     var noteOnVelocity = (_lastTranslationVectorOfPitchPointable.z + Config.TouchResponseMinVelocity) / (Config.TouchResponseMaxVelocity - Config.TouchResponseMinVelocity);
                     noteOnVelocity = LimitDoubleValue(-noteOnVelocity, Config.TouchResponseMinValue, Config.TouchResponseMaxValue);
-                    OnNoteOnEvent(new NoteEventArgs(CurrentPitch, noteOnVelocity));
-                    Debug.WriteLine("{0}:{1}, Note on: {2}", currentTime.Second, currentTime.Millisecond, CurrentPitch);
                     _lastNoteOnDateTime = currentTime;
-
+                    _noteOnPosition = pitchHand.PalmPosition;
+                    Debug.WriteLine("Note on: {0}, at position: {1}", CurrentPitch, _noteOnPosition);
+                    OnNoteOnEvent(new NoteEventArgs(CurrentPitch, noteOnVelocity));
+                    
                     return true;
                 }
 
@@ -285,13 +301,13 @@ namespace Anberkada.AirComp.Biz
         }
 
         /// <summary>
-        /// Tries to handle the note on gesture.
+        /// Tries to handle the note off gesture.
         /// </summary>
         /// <param name="frame">The frame.</param>
         /// <returns>True, if gesture was handled; otherwise false</returns>
         private bool TryHandleNoteOff(Frame frame)
         {
-            const double defaultVelocity = 1.0f;
+            const float distanceForNoteOff = 100.0f;
 
             var pitchHand = GetPitchHand(frame.Hands);
             if (pitchHand == null)
@@ -299,16 +315,18 @@ namespace Anberkada.AirComp.Biz
                 return false;
             }
 
-            if (pitchHand.IsValid && pitchHand.Pointables.Count >= 1)
+            if (pitchHand.IsValid)
             {
-                var pitchPointable = pitchHand.Pointables[0];
-                var velocity = pitchPointable.TipVelocity;
-                if (velocity.z > 10)
-                {
-                    OnNoteOffEvent(new NoteEventArgs(CurrentPitch, defaultVelocity));
-                }
+                var currentPosition = pitchHand.PalmPosition;
+                var distance = currentPosition.DistanceTo(_noteOnPosition);
 
-                return true;
+                if (distance > distanceForNoteOff)
+                {
+                    Debug.WriteLine("Note off: {0}, at position: {1}, distance: {2}", PlayingPitch, currentPosition, distance);
+                    OnNoteOffEvent(new NoteEventArgs(PlayingPitch, 1.0f));
+                    
+                    return true;
+                }
             }
 
             return false;

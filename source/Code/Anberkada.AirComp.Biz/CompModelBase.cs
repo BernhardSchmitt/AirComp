@@ -22,6 +22,7 @@ namespace Anberkada.AirComp.Biz
         private readonly CompConfig _config;
         
         private Pitch _currentPitch;
+        private Pitch _playingPitch;
         private double _currentAmplitude;
         private double _currentExpression;
         private ExpressionControlType _currentExpressionControlType;
@@ -70,6 +71,24 @@ namespace Anberkada.AirComp.Biz
                 {
                     SetBackingFieldWithNotification(value, ref _currentPitch);
                 }
+            }
+        }
+
+        /// <summary>
+        /// Gets the pitch of the actual playing note.
+        /// </summary>
+        /// <value>
+        /// The pitch if note is on; otherwise null.
+        /// </value>
+        public Pitch PlayingPitch
+        {
+            get
+            {
+                return _playingPitch;
+            }
+            private set
+            {
+                SetBackingFieldWithNotification(value, ref _playingPitch);
             }
         }
 
@@ -361,6 +380,7 @@ namespace Anberkada.AirComp.Biz
         protected virtual void OnNoteOnEvent(NoteEventArgs eventArgs)
         {
             NoteOn(this, eventArgs);
+            PlayingPitch = eventArgs.Pitch;
         }
 
         /// <summary>
@@ -370,6 +390,7 @@ namespace Anberkada.AirComp.Biz
         protected virtual void OnNoteOffEvent(NoteEventArgs eventArgs)
         {
             NoteOff(this, eventArgs);
+            PlayingPitch = null;
         }
 
         /// <summary>
@@ -378,6 +399,7 @@ namespace Anberkada.AirComp.Biz
         protected virtual void OnAllNotesOffEvent()
         {
             AllNotesOff(this, null);
+            PlayingPitch = null;
         }
 
         /// <summary>

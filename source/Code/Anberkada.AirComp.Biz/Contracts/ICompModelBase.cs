@@ -75,6 +75,14 @@ namespace Anberkada.AirComp.Biz.Contracts
         Pitch CurrentPitch { get; set; }
 
         /// <summary>
+        /// Gets the pitch of the actual playing note.
+        /// </summary>
+        /// <value>
+        /// The pitch if note is on; otherwise null.
+        /// </value>
+        Pitch PlayingPitch { get; }
+
+        /// <summary>
         /// Gets or sets the current scale.
         /// </summary>
         /// <value>
