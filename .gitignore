@@ -1,0 +1,12 @@
+*.dll
+*.pdb
+source/Bin/Anberkada.AirComp.exe
+source/Bin/Anberkada.AirComp.exe.config
+*.exe
+source/Bin/Anberkada.AirComp.vshost.exe.config
+source/Bin/Anberkada.AirComp.vshost.exe.manifest
+*.suo
+source/Code/Anberkada.AirComp.Biz.Tests/bin/Debug/Microsoft.VisualStudio.QualityTools.UnitTestFramework.xml
+source/Code/Anberkada.AirComp.Biz.Tests/obj/Debug/Anberkada.AirComp.Biz.Tests.csproj.FileListAbsolute.txt
+*.cache
+source/Code/Anberkada.AirComp.Biz/obj/Debug/Anberkada.AirComp.Biz.csproj.FileListAbsolute.txt

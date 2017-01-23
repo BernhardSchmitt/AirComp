@@ -315,6 +315,24 @@ namespace Anberkada.AirComp.Ui
         }
 
         /// <summary>
+        /// Gets or sets the distance between note on/off position to trigger note off.
+        /// </summary>
+        /// <value>
+        /// The distance.
+        /// </value>
+        public double DistanceForNoteOffTrigger
+        {
+            get
+            {
+                return Model.DistanceForNoteOffTrigger;
+            }
+            set
+            {
+                Model.DistanceForNoteOffTrigger = value;
+            }
+        }
+
+        /// <summary>
         /// Gets the reset command.
         /// </summary>
         /// <value>
@@ -357,6 +375,9 @@ namespace Anberkada.AirComp.Ui
                     break;
                 case "CurrentExpression":
                     RaisePropertyChanged("CurrentExpression");
+                    break;
+                case "DistanceForNoteOffTrigger":
+                    RaisePropertyChanged("DistanceForNoteOffTrigger");
                     break;
             }
         }

@@ -18,6 +18,7 @@ namespace Anberkada.AirComp.Ui.Stubs
             CurrentPitch = new Pitch(60);
             PlayingPitch = new Pitch(50);
             CurrentPitchBend = 0f;
+            DistanceForNoteOffTrigger = 100f;
             CurrentScale = ScaleFactory.CreateScale(Tone.C, Scales.Chromatic);
             AvailableOutDevices = new List<string> { "My MIDI out device" };
             CurrentOutDevice = AvailableOutDevices.First();
@@ -60,6 +61,8 @@ namespace Anberkada.AirComp.Ui.Stubs
         public Pitch PlayingPitch { get; set; }
 
         public double CurrentPitchBend { get; set; }
+
+        public double DistanceForNoteOffTrigger { get; set; }
 
         public IScale CurrentScale { get; set; }
 

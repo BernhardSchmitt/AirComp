@@ -5,13 +5,15 @@
              xmlns:local="clr-namespace:Anberkada.AirComp.Ui"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
+             d:DesignHeight="100" d:DesignWidth="400">
     <!--<UserControl.DataContext>
         <local:AirCompViewModel />
     </UserControl.DataContext>-->
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="0"/>
+            <RowDefinition Height="20"/>
+            <RowDefinition/>
+            <RowDefinition Height="20"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
@@ -19,15 +21,21 @@
             <ColumnDefinition/>
             <ColumnDefinition/>
             <ColumnDefinition/>
+            <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <TextBlock Grid.Row="0" Grid.ColumnSpan="4" HorizontalAlignment="Left">MIDI Out</TextBlock>
-        <TextBlock Grid.Row="1" Grid.Column="0">Device:</TextBlock>
-        <ComboBox Grid.Row="1" Grid.Column="1"
+        <TextBlock Grid.Row="1" Grid.Column="1" HorizontalAlignment="Right">Device:</TextBlock>
+        <ComboBox Grid.Row="1" Grid.Column="2"
                   ItemsSource="{Binding Path=AvailableOutDevices}" SelectedValue="{Binding Path=CurrentOutDeviceName}"
                   VerticalAlignment="Top"/>
-        <TextBlock Grid.Row="1" Grid.Column="2" >Channel:</TextBlock>
-        <ComboBox Grid.Row="1" Grid.Column="3" 
+        <TextBlock Grid.Row="1" Grid.Column="3" HorizontalAlignment="Right" >Channel:</TextBlock>
+        <ComboBox Grid.Row="1" Grid.Column="4" 
                   ItemsSource="{Binding Path=AvailableOutChannels}" SelectedValue="{Binding Path=CurrentOutChannel}"
                   VerticalAlignment="Top"/>
+
+        <TextBlock Grid.Row="2" Grid.ColumnSpan="4" HorizontalAlignment="Left">Air space</TextBlock>
+        <TextBlock Grid.Row="4" Grid.Column="1" HorizontalAlignment="Right">Portato</TextBlock>
+        <Slider x:Name="DistanceSlider" Grid.Row="4" Grid.Column="2" Orientation="Horizontal" Width="120" HorizontalAlignment="Center" Minimum="50.0" Maximum="150.0" Value="{Binding Path=DistanceForNoteOffTrigger, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBlock Grid.Row="4" Grid.Column="3">Legato</TextBlock>
     </Grid>
 </UserControl>

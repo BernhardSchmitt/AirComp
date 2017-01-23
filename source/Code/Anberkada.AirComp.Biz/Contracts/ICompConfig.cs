@@ -107,6 +107,14 @@ namespace Anberkada.AirComp.Biz.Contracts
         /// </value>
         TimeSpan NoteOnRetriggerMinTimeSpan { get; }
 
+        /// <summary>
+        /// Gets the default distance between note on and -off position as threshold.
+        /// </summary>
+        /// <value>
+        /// The distance.
+        /// </value>
+        float DefaultDistanceForNoteOffTrigger { get; }
+
         #endregion // Note on/off
 
         #region Expression

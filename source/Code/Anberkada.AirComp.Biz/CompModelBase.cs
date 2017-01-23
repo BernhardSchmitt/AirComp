@@ -27,6 +27,7 @@ namespace Anberkada.AirComp.Biz
         private double _currentExpression;
         private ExpressionControlType _currentExpressionControlType;
         private double _currentPitchBend;
+        private double _distanceForNoteOffTrigger;
         private IScale _currentScale;
         private string _currentOutDevice;
         private int _currentOutChannel;
@@ -44,7 +45,7 @@ namespace Anberkada.AirComp.Biz
             _config = config;
             AvailableOutDevices = outDevices;
             AvailableOutChannels = outChannels;
-            
+            DistanceForNoteOffTrigger = _config.DefaultDistanceForNoteOffTrigger;
             CurrentScale = new ChromaticScale(Tone.C);
         }
 
@@ -212,6 +213,31 @@ namespace Anberkada.AirComp.Biz
                 lock (Lock)
                 {
                     SetBackingFieldWithNotification(value, ref _currentPitchBend, 0.01);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets the distance between note on/off position to trigger note off.
+        /// </summary>
+        /// <value>
+        /// The distance.
+        /// </value>
+        public double DistanceForNoteOffTrigger
+        {
+            get
+            {
+                lock (Lock)
+                {
+                    return _distanceForNoteOffTrigger;
+                }
+            }
+            set
+            {
+                lock (Lock)
+                {
+                    SetBackingFieldWithNotification(value, ref _distanceForNoteOffTrigger, 1.0f);
+                    Debug.WriteLine("_distanceForNoteOffTrigger: {0}", _distanceForNoteOffTrigger); //bs TODO
                 }
             }
         }

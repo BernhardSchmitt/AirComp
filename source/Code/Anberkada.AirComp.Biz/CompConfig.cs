@@ -158,6 +158,20 @@ namespace Anberkada.AirComp.Biz
             }
         }
 
+        /// <summary>
+        /// Gets the default distance between note on and -off position as threshold.
+        /// </summary>
+        /// <value>
+        /// The distance.
+        /// </value>
+        public float DefaultDistanceForNoteOffTrigger
+        {
+            get
+            {
+                return 100.0f;
+            }
+        }
+
         #endregion // Note on/off
 
         #region Expression

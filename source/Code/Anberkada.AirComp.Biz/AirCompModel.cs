@@ -307,8 +307,6 @@ namespace Anberkada.AirComp.Biz
         /// <returns>True, if gesture was handled; otherwise false</returns>
         private bool TryHandleNoteOff(Frame frame)
         {
-            const float distanceForNoteOff = 100.0f;
-
             var pitchHand = GetPitchHand(frame.Hands);
             if (pitchHand == null)
             {
@@ -320,11 +318,12 @@ namespace Anberkada.AirComp.Biz
                 var currentPosition = pitchHand.PalmPosition;
                 var distance = currentPosition.DistanceTo(_noteOnPosition);
 
-                if (distance > distanceForNoteOff)
+                if (distance > DistanceForNoteOffTrigger)
                 {
+                    Debug.WriteLine("DistanceForNoteOffTrigger: {0}", DistanceForNoteOffTrigger); //bs TODO
                     Debug.WriteLine("Note off: {0}, at position: {1}, distance: {2}", PlayingPitch, currentPosition, distance);
                     OnNoteOffEvent(new NoteEventArgs(PlayingPitch, 1.0f));
-                    
+
                     return true;
                 }
             }

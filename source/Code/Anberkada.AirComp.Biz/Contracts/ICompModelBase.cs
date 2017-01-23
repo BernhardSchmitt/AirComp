@@ -124,6 +124,14 @@ namespace Anberkada.AirComp.Biz.Contracts
         double CurrentPitchBend { get; set; }
 
         /// <summary>
+        /// Gets or sets the distance between note on/off position to trigger note off.
+        /// </summary>
+        /// <value>
+        /// The distance.
+        /// </value>
+        double DistanceForNoteOffTrigger { get; set; }
+
+        /// <summary>
         /// Occurs on a [note on] event.
         /// </summary>
         event NoteOnEventHandler NoteOn;
